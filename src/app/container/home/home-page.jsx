@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", calc);
                             </div>
                         </div>
 
-                    
                         <select className='id-select' name="tipo"ref={register({required:true})} id="">
                             <option className='select-place' value="DEFAULT" disabled>Tipo de documento</option>
                             <option className='border-option' value="CC">Cédula de ciudadania</option>
