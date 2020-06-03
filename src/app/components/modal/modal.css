@@ -1,0 +1,53 @@
+.modalComponent > .modal-wrapper {
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    animation-name: op;
+    animation-duration: 1s;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modalComponent > .modal-wrapper > .container-modal {width: 80%; background-color: white;  height: 95%; margin: auto; border: solid 1px black; padding: 10px}
+.modalComponent > .modal-wrapper > .container-modal > .container-close {width: 100%; display: flex; justify-content: flex-end;}
+.modalComponent > .modal-wrapper > .container-modal > .container-close > i {font-size: 30px; color: #ECBF43; cursor: pointer;}
+.modalComponent > .modal-wrapper > .container-modal > .titleModal {text-align: center; color: #ECBF43; font-size: 30px; font-weight: 400; font-family: diavlo; margin: 30px 0;}
+.modalComponent > .modal-wrapper > .container-modal > .C-H-D {width: 94%; position: relative; height: 55%; overflow: scroll; border: solid 1px #707070; margin: 0 auto; }
+.modalComponent > .modal-wrapper > .container-modal > .C-H-D::-webkit-scrollbar {width: 20px; height: 0;}
+.modalComponent > .modal-wrapper > .container-modal > .C-H-D > .P-C-H-D {font-size: 22px; padding: 20px 15px; font-size: Helvetica; color: #747474;}
+.modalComponent > .modal-wrapper > .container-modal > .C-H-D > .B-S {width: 75.2%; position: fixed; height: 20px; background-image: linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0));}
+.modalComponent > .modal-wrapper > .container-modal > .BTN-A {width: 15%; border: none; min-width: 121px; height: 45px; font-size: 18px; display: block; margin: 30px auto ;box-shadow: 3px 3px 16px #00000029; background-color: #ECBF43; border-radius: 4px; color: black; text-transform: uppercase; border-radius: 31px;}
+.modalComponent > .modal-wrapper > .container-modal > .BTN-A:hover {background-color: #ECBF43;}
+.modalComponent > .modal-wrapper > .container-modal > .BTN-A:focus {border: none;}
+
+/* .P-C-H-D h3 {margin-bottom: 20px;} */
+.m-top-habeas-20 {margin-top: 20px;}
+.headerModal {display: none;}
+
+
+@media only screen and (max-width:500px){
+    .modalComponent > .modal-wrapper > .container-modal {width: 80%; background-color: white;  height: 90%; margin: auto; border: solid 1px black; padding: 10px}
+    .modalComponent > .modal-wrapper > .container-modal > .BTN-A {margin: 20px auto;}
+    .modalComponent > .modal-wrapper > .container-modal > .titleModal {display: none !important;}
+    /* .modalComponent > .modal-wrapper > .container-modal > .C-H-D {width: 94%; height: 55%;} */
+
+    
+    .headerModal-container {display: flex; flex-direction: row;background: transparent linear-gradient(103deg, #FFFFFF 0%, #ECBF43 100%) 0% 0% no-repeat padding-box; height: 100px;}
+    
+    .headerModal {display: block;height: 100px;}
+    
+    .clients-register-modal {width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;}
+    .logo-nuestro-container-modal {width: 10%; display: flex; flex-direction: row; justify-content: center; align-items: center;}
+    .logo-nuestro-modal {width: 60%; height: 60%; margin: 0; min-width: 60px; min-height: 70px; margin-left: 30px;}
+
+    .title-habeas-modal {font-size: 14px; margin: 0 0 0 50px;}
+}
+
+@keyframes op {
+    from { background: rgba(0,0,0,0);}
+    to   { background: rgba(0,0,0,0.6);}
+}

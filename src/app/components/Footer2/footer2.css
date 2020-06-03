@@ -1,0 +1,11 @@
+.footer-container {width: 100%; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center;position: absolute; bottom: 0;}
+
+.iatech-container {/* width: 20%; */ display: flex; flex-direction: row; align-items: center;}
+
+.desing-letter {text-align: right; font-family: Helvetica; font-weight: 400; font-size: 15px; color: #2E2E2E;}
+
+.img-iatech {height: 25px; max-width: 115px; margin-left: 5px;}
+
+.rigths-container {/* width: 80%; */ text-align: center;}
+
+.rigths-data {font-family: Helvetica; font-size: 15px; font-weight: 400;}

@@ -1,0 +1,59 @@
+.main-registered-container {width: 100%; height: 100vh; background: transparent linear-gradient(140deg, #FFFFFF 50%, #ECBF43 100%) 0% 0%; position: fixed; top: 0; right: 0; bottom: 0; left: 0; padding: 0px 0 0; padding:0; margin: 0;}
+/**********************************/
+
+/* ovalos */
+.ovalos-registered {position: absolute; z-index: 5; right: 150px; bottom: 0; width: 20%; height: 10%; min-width: 400px; min-height: 250px;}
+/* ****************** */
+
+/* imagen asíatica */
+.asiatic-girl-registered {position: absolute; z-index: 10; right: 0px; bottom: 0; width: 35%; height:90%; min-width: 100px; min-height: 250px;}
+/* ****************** */
+
+
+/*contenedor principal*/
+.registered-container {width: 100vw; height: 65%; /* text-align: center; */ margin: 0 auto; padding: 0;}
+.logoNuestro-registered {width: 12%; height: 10%; margin: 50px 0 0; min-width: 300px; min-height: 200px;}
+.register-checked-container {color: #1DA23C; font-family: Helvetica; font-weight: 400; font-size: 20px; text-transform: uppercase; height: 200px; width: 70%; margin: 20px auto; background-color: white; border: 10px solid #ECBF43; display: flex; justify-content: center; align-items: center; flex-direction: column;}
+.h-block {display: block !important;}
+.register-checked-container-responsive {display: none;}
+
+/*********************************/
+
+
+/*Botón Nuevo Registro*/
+.registered-container div > button {width: 180px; cursor: pointer; border: none;  min-width: 121px; height: 30px; display: block; margin: 20px auto 0;box-shadow: 0px 3px 6px #00000029; background-color: #ECBF43; border-radius: 31px; color: #2E2E2E; display: flex; justify-content: center; align-items: center; text-transform: uppercase; font-family: Helvetica; font-size: 15px; font-weight: 400; position: relative; z-index: 10;}
+/*********************************/
+
+
+
+/* footer */
+.footer-registered {position: absolute; bottom: 0; left: 0; width: 57%;}
+.iatech-container-registered {display: flex; flex-direction: row; justify-content: flex-start; align-items: center; margin: 0 0 0 30px;}
+.desing-letter-registered {text-align: right; font-family: Helvetica; font-weight: 400; font-size: 15px; color: #2E2E2E;}
+.img-iatech-registered {height: 25px; max-width: 115px; margin-left: 5px;}
+
+/* ******************************* */
+
+@media only screen and (max-width:768px)
+    {
+        .asiatic-girl-registered {width: 35%; height:80%; min-width: 130px; min-height: 200px;}
+        .footer-registered { justify-content: center; position: absolute; bottom: 0; left: 25%; right: 25%;}
+    }  
+
+@media only screen and (max-width:600px)
+    {
+        .asiatic-girl-registered {width: 18%; height:50%; min-width: 150px; min-height: 150px;}
+        .ovalos-registered {right: 0px; bottom: 0px; right: 1; width: 00%; height: 10%; min-width: 300px; min-height: 200px;}
+        
+        .registered-container {width: 80vw; height: 50%; display: flex; flex-direction: column; justify-content: center; margin: 0px auto 0;}
+        .logoNuestro-registered {width: 12%; height: 10%; margin: 0px auto 0; min-width: 150px; min-height: 130px;}
+        .register-checked-container {display: none;}
+        .register-checked-container-responsive {color: #1DA23C; font-family: Helvetica; font-weight: 400; font-size: 10px; text-transform: uppercase; height: 90px; width: 100%; margin: 10px auto; background-color: white; border: 4px solid #ECBF43; display: flex; justify-content: center; align-items: center; flex-direction: column;}
+
+        .registered-container div > button {width: 180px; cursor: pointer; border: none;  min-width: 121px; height: 30px; display: block; margin: 20px auto 0 0;box-shadow: 0px 3px 6px #00000029; background-color: #ECBF43; border-radius: 31px; color: #2E2E2E; display: flex; justify-content: center; align-items: center; text-transform: uppercase; font-family: Helvetica; font-size: 15px; font-weight: 400; position: relative; z-index: 10;}
+        
+        .footer-registered { position: absolute; bottom: 0; left: 0; z-index: 15; width: 57%;}
+        .iatech-container-registered {display: flex; flex-direction: column; justify-content: flex-start; margin: 0;}
+        .desing-letter-registered {display: block; text-align: left; margin-bottom: 10px; font-size: 16px;}
+        .img-iatech-registered {display: block; margin: 0 !important; text-align: left; width: 35px; min-width: 60px;  height: 35px;}
+    }   
