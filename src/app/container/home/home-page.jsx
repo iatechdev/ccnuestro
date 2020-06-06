@@ -16,12 +16,7 @@ const Home = ({ history, data }) =>{
     let dataValue = undefined;
 
 
-    const handleChange = e =>{
-        setStateButton({
-            ...stateButton,
-            [e.target.name] : e.target.value
-        })
-    }
+    
 
 
     document.addEventListener("change", () => {setStateDOM(true)});
@@ -39,8 +34,9 @@ const Home = ({ history, data }) =>{
     async function Auth(dataValue) {
         await axios.post('https://formnuestros.iatech.com.co:4002/api/auth/valid',
         {sic : dataValue.sic, tipo : dataValue.tipo }).then((response)  => {
-             if(response.status === 200 && response.data.ok === true){
-                 const token = {auth : true, sic : dataValue.sic, tipo : dataValue.tipo }
+             if(response.status === 200 && response.data.ok[0].id_c){
+                 console.log(response)
+                 const token = {auth : true, sic : dataValue.sic, tipo : dataValue.tipo, id: response.data.ok[0].id_c }
                  setStateButton(true);
                  localStorage.setItem("Token", JSON.stringify(token)); 
                  history.push('/registro');           
@@ -53,16 +49,7 @@ const Home = ({ history, data }) =>{
          });
      }
 
-     function show() {
-        console.log(login);
-    }
-
-function calc(){
-    let heightPage = parseInt(window.getComputedStyle(document.querySelector(".Box")).height);
-        document.querySelector('.Box').style.height = heightPage + "px";
-}
-
-document.addEventListener("DOMContentLoaded", calc);
+ 
 
 
     return(
@@ -92,8 +79,8 @@ document.addEventListener("DOMContentLoaded", calc);
                         </div>
 
                     
-                        <select className='id-select' name="tipo"ref={register({required:true})} id="">
-                            <option className='select-place' value="DEFAULT" disabled>Tipo de documento</option>
+                        <select className='id-select' name="tipo" defaultValue="none" ref={register({required:true})} id="">
+                            <option className='select-place' value="none" disabled>Tipo de documento</option>
                             <option className='border-option' value="CC">Cédula de ciudadania</option>
                             <option className='border-option' value="CEX">Cédula de extranjería</option>
                             <option className='border-option' value="NIT">NIT</option>

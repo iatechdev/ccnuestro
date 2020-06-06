@@ -2,7 +2,7 @@
 
 /* ********************** */
 
-.main-protection-elements-container {width: 60%; margin: 50px auto;}
+.main-protection-elements-container {width: 78%; margin: 50px auto;}
 
 /* ********************** */
 
@@ -11,30 +11,68 @@
 .protection-options-container {display: flex; flex-direction: row; justify-content: space-between;}
 
 
-.main-checkbox-container {display: flex; flex-direction: row; }
+.main-checkbox-container {display: flex; flex-direction: row;margin-top: 17px; }
 
-.radio-elements {display: none;}
+.radio-elements {display: block;}
 div.checkbox-container {position: relative; display: block;}
-div.checkbox-container input{appearance: none; outline: none; position: absolute; right: 0; -webkit-appearance: none; -moz-appearance: none; visibility: hidden;}
+/*input[type=checkbox]{
+    display: none; 
+  }
+  input[type=checkbox] + label{
+    cursor:pointer;
+  }
+  label:before{
+    content:'';
+    background:transparent;
+    border: 1px solid #ECBF43;;
+    border-radius: 15px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    margin-left: -22px;
+    text-align:center;
+    text-shadow:4px -2px 3px gray;
+    vertical-align:middle;
+  }
+  input[type=checkbox]:checked + label:before{
+    content: '';
+    position: absolute;
+    background: #ECBF43;
+    background-image: url(../../../assets/icons/check-yellow-icon.svg); 
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-family:'Times New Roman';
+    
+  }
+/*div.checkbox-container input{appearance: none; outline: none; position: absolute; right: 0; -webkit-appearance: none; -moz-appearance: none; visibility: hidden;}
 div.checkbox-container input + i {background: transparent; position: absolute; cursor: pointer; border-radius: 50%; width: 20px; height: 20px; left: -30px; top: -3px; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
-div.checkbox-container input[type=checkbox]:checked + i {border: 1px solid #ECBF43;background: #ECBF43; background-image: url(../../../assets/icons/check-yellow-icon.svg); background-position: center; height: 20px; width: 20px; background-size: 80%; background-repeat: no-repeat; z-index: 5;}
-.s-element {color: #2E2E2E; font-family: Helvetica; font-size: 15px; font-weight: 400;/*  margin-left: 10px; */}
+div.checkbox-container input[type=checkbox]:checked + i {border: 1px solid #ECBF43;background: #ECBF43; background-image: url(../../../assets/icons/check-yellow-icon.svg); background-position: center; height: 20px; width: 20px; background-size: 80%; background-repeat: no-repeat;}*/
+.s-element {color: #2E2E2E; font-family: Helvetica; font-size: 15px; text-align: left; font-weight: 400;margin-left: 10px;}
 
 /* ********************** */
 /* .options-risk-container input[type=text] {width: 20px; height: 20px; border: 1px solid #ECC149; box-shadow: 0px 2px 2px #00000029; border-radius: 50%; color: #ECC149; cursor: pointer;} */
 .options-risk-main-container {margin: 40px auto 0;}
-.options-risk-container {width: 70%; margin: 0 auto; padding: 0 140px; display: grid; grid-template-columns: 10% 90%; grid-template-rows: repeat(5, 30px);}
-.m-top {margin-top: 15px;}
+.options-risk-container {width: 100%; margin: 0 auto;display:flex; flex-direction:column; justify-content:flex-start;}
+.m-top {margin-top: 25px;}
 
 
 .s-checkbox {display: none;}
-div.checkbox-container-synthoms {position: relative; display: block;}
+div.checkbox-container-synthoms {position: relative; display: flex;}
 div.checkbox-container-synthoms input{appearance: none; outline: none; position: absolute; right: 0; -webkit-appearance: none; -moz-appearance: none; visibility: hidden;}
 div.checkbox-container-synthoms input + i {background: transparent; position: absolute; cursor: pointer; border-radius: 50%; width: 20px; height: 20px; left: 20px; top: 5px; right: 0; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
 div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px solid #ECBF43;background: #ECBF43; background-image: url(../../../assets/icons/check-yellow-icon.svg); background-position: center; height: 20px; width: 20px; background-size: 80%; background-repeat: no-repeat; z-index: 5;}
 .s-sintoma {color: #2E2E2E; font-family: Helvetica; font-size: 15px; font-weight: 400; display: flex; align-items: center;}
 
 
+.container-preguntas{
+  display: flex  !important;
+  flex-direction: column;
+}
 
 /* ********************** */
 
@@ -48,15 +86,15 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
 
 @media only screen and (max-width:1200px)
     {
-        .main-protection-elements-container {width: 100%; margin: 40px auto;}
+        /*.main-protection-elements-container {width: 100%; margin: 50px auto;}*/
         .protection-elements-section {width: 100%; margin: 0 auto;}
         .protection-elements-title {font-size: 16px; margin: 0 0 10px; text-align: center;}
-        .protection-options-container {display: flex; flex-direction: row; justify-content: space-around; text-align: center; width: 40%; margin: 0 auto;}
-        .s-element {font-size: 14px; vertical-align: middle;}
+        .protection-options-container {display: flex; flex-direction: row; justify-content: space-around; text-align: center; width: 60%; margin: 0 auto;}
+        .s-element {font-size: 14px; vertical-align: middle;text-align: left;}
         .m-right {margin-right: 20px;}
         
         .options-risk-main-container {margin: 50px auto 0; position: relative; z-index: 10; align-items: center;}
-        .options-risk-container {width: 55%; margin: 20px auto; padding: 0; grid-template-columns: 10% 90%; align-items: center; justify-content: center;}
+        .options-risk-container {width: 60%; margin: 20px auto; padding: 0;justify-content: center;}
         .s-checkbox {text-align: center; margin: 0 auto;}
         .m-top {margin-top: 20px;}
 
@@ -82,7 +120,7 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
         .m-right {margin-right: 20px;}
         
         .options-risk-main-container {margin: 40px auto 0; position: relative; z-index: 10; align-items: center;}
-        .options-risk-container {width: 60%; margin: 20px auto; padding: 0; grid-row-gap: 15px;}
+        .options-risk-container {width: 48%; margin: 20px auto; padding: 0; grid-row-gap: 15px;}
         .m-top {margin-top: 20px;}
         .m-top-mobile {margin-top: 15px;}
 
@@ -106,8 +144,8 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
         .m-right {margin-right: 20px;}
         
         .options-risk-main-container {margin: 30px auto 0; position: relative; z-index: 10; align-items: center;}
-        .options-risk-container {width: 80%; margin: 20px auto; padding: 0;}
-        .m-top {margin-top: 20px;}
+        .options-risk-container {width: 61%; margin: 20px auto; padding: 0;}
+        .m-top {margin-top: 30px;}
 
         .main-protection-elements-container form > button {position: relative; z-index: 10;}
 
@@ -128,9 +166,9 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
         .protection-options-container {display: flex; flex-direction: column; justify-content: flex-start; text-align: left; width: 80%; margin: 0 auto;}
         
         .options-risk-main-container {margin: 30px auto 0; position: relative; z-index: 10;}
-        .options-risk-container {width: 100%; margin: 0 auto; padding: 0; grid-row-gap: 15px;}
+        .options-risk-container {width: 81%; margin: 0 auto; padding: 0; grid-row-gap: 15px;}
         .s-element {font-size: 12px; margin-right: 0px; display: flex; align-items: center;}
-        .m-top {margin-top: 0px;}
+        .m-top {margin-top: 20px;}
         .r-top {margin-top: 10px;}
         div.checkbox-container-synthoms input + i {background: transparent; position: absolute; cursor: pointer; border-radius: 50%; width: 20px; height: 20px; left: 0px; top: -13px; right: 0; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
 
