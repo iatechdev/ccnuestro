@@ -4,16 +4,21 @@ body {font-family: Helvetica, sans-serif; overflow-x: hidden;}
 button, input, select {outline: none;}
 body, #root {width: 100vw;}
 
-@font-face {
+/* @font-face {
     font-family: "Diavlo";
     src: url(./assets/fonts/Diavlo_LIGHT_II_37.otf);
+} */
+
+@font-face {
+    font-family: "Helvetica";
+    src: url(./assets/fonts/Helvetica.ttf);
 }
 
 /* @font-face {
     font-family: "Myriad";
-    src: url(./assets/fonts/MYRIADPRO-BOLD.otf);
-} */
-
+    src: url(./assets/fonts/MyriadPro-Light.otf);
+}
+ */
 
 .w-100 {width: 100%; }
 .w-50 {width: 50%;}

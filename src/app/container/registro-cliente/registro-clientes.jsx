@@ -70,6 +70,8 @@ const RegistroClientes = ({ history }) =>{
                             
                             
                             <input className='item3 personal-data-field' type="text" onChange={e => handleChange(e)} name="name"  ref={register}  id="name"  placeholder="Nombre Completo"/>
+                            
+                            <span className='item7-grid-d-none'></span>
 
                             <input className='item4 personal-data-field' type="text"  onChange={e => handleChange(e)} name="celular_c"  ref={register}  id="celular_c" placeholder="Teléfono / Celular"/>
                         </div>
