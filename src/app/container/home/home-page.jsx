@@ -9,16 +9,16 @@ import './home-page.css';
 
 
 const Home = ({ history, data }) =>{
+  
+    localStorage.clear();
     const { register, handleSubmit, errors} = useForm(0);
     const [login, setLogin] = useState(0);
     const [stateButton, setStateButton] = useState(true);
     const [stateDOM, setStateDOM] = useState(false);
     let dataValue = undefined;
 
-
     
-
-
+   
     document.addEventListener("change", () => {setStateDOM(true)});
 
     const onSubmit = dataForm => {
@@ -31,12 +31,16 @@ const Home = ({ history, data }) =>{
         }
     }
 
+    
+
     async function Auth(dataValue) {
-        await axios.post('https://formnuestros.iatech.com.co:4002/api/auth/valid',
+        await axios.post('https://formnuestros.iatech.com.co:4002/api/personalData/createUser',
         {sic : dataValue.sic, tipo : dataValue.tipo }).then((response)  => {
-             if(response.status === 200 && response.data.ok[0].id_c){
+            console.log(response)
+             if(response.status === 200 && response.data && response.data.Userexist){
                  console.log(response)
-                 const token = {auth : true, sic : dataValue.sic, tipo : dataValue.tipo, id: response.data.ok[0].id_c }
+                 console.log(response.data.Userexist[0].id)
+                 const token = {auth : true, sic : dataValue.sic, tipo : dataValue.tipo, id:response.data.Userexist[0].id}
                  setStateButton(true);
                  localStorage.setItem("Token", JSON.stringify(token)); 
                  history.push('/registro');           

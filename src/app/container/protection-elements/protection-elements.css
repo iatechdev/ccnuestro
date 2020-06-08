@@ -10,18 +10,70 @@
 .protection-elements-title {font-size: 20px; color: #ECBF43; font-family: Helvetica; font-weight: bold; text-transform: uppercase; margin: 0 0 20px; text-align: center;}
 .protection-options-container {display: flex; flex-direction: row; justify-content: space-between;}
 
+.protection-options-container.container-two{
+  display: flex;
+  flex-direction: column;
+}
 
 .main-checkbox-container {display: flex; flex-direction: row;margin-top: 17px; }
 
 .radio-elements {display: block;}
 div.checkbox-container {position: relative; display: block;}
-/*input[type=checkbox]{
+
+/*.main-checkbox-container-input input[type=checkbox] {display: none;}
+.main-checkbox-container-input {position: relative; display: block;}
+.main-checkbox-container-input input{appearance: none; outline: none; position: absolute; right: 0; -webkit-appearance: none; -moz-appearance: none; visibility: hidden;}
+.main-checkbox-container-input input + i {background: transparent;position: absolute; cursor: pointer; border-radius: 50%; width: 25px; height: 25px; left: -30px;top: -13px; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
+.main-checkbox-container-input input[type=radio]:checked + i {border: 1px solid #ECBF43;background: #ECBF43; background-image: url(../../../assets/icons/check-yellow-icon.svg); background-position: center; height: 21px; width: 21px; background-size: 80%; background-repeat: no-repeat;}
+*/
+
+.main-checkbox-container  label{
+  font-size: 1em
+}
+
+.main-checkbox-container  input[type=checkbox]{
+  display: none; /*solo se esconde para tener un campo personalisado*/
+}
+
+.main-checkbox-container  input[type=checkbox] + label{
+  cursor:pointer;
+}
+/*esta linea significa esto + el siguiente elemento*/
+
+.main-checkbox-container  label:before{
+  content:'';
+  background:transparent;
+  border: 1px solid #ECBF43;
+
+  border-radius: 15px;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  text-align:center;
+  text-shadow:4px -2px 3px gray;
+  vertical-align:middle;
+}
+.main-checkbox-container  input[type=checkbox]:checked + label:before{
+  content: '✔';
+  background-color: #ECBF43;
+  font-size: 19px;
+  margin-top: 3px;
+  font-family:'Times New Roman';
+  color:#f4f7f2;
+}
+
+
+/*.main-checkbox-container-input input[type=checkbox]{
     display: none; 
   }
-  input[type=checkbox] + label{
+  .main-checkbox-container-input label{
+    font-size: 17px;
+  }
+  .main-checkbox-container-input input[type=checkbox] + label{
     cursor:pointer;
   }
-  label:before{
+  .main-checkbox-container-input label:before{
     content:'';
     background:transparent;
     border: 1px solid #ECBF43;;
@@ -29,23 +81,23 @@ div.checkbox-container {position: relative; display: block;}
     display: inline-block;
     height: 15px;
     width: 15px;
-    margin-left: -22px;
+    margin-right:20px;
     text-align:center;
     text-shadow:4px -2px 3px gray;
     vertical-align:middle;
   }
-  input[type=checkbox]:checked + label:before{
+  .main-checkbox-container-input input[type=checkbox]:checked + label:before{
     content: '';
     position: absolute;
     background: #ECBF43;
-    background-image: url(../../../assets/icons/check-yellow-icon.svg); 
+    background-image: url(../../../assets/icons/check-yellow-icon.svg);
     background-position: center;
-    background-size: 80%;
+    background-size: 5  0%;
     background-repeat: no-repeat;
     width: 15px;
     height: 15px;
     border-radius: 15px;
-    font-size: 10px;
+    font-size: 15px;
     font-family:'Times New Roman';
     
   }
@@ -61,12 +113,12 @@ div.checkbox-container input[type=checkbox]:checked + i {border: 1px solid #ECBF
 .m-top {margin-top: 25px;}
 
 
-.s-checkbox {display: none;}
+/*.s-checkbox {display: none;}
 div.checkbox-container-synthoms {position: relative; display: flex;}
 div.checkbox-container-synthoms input{appearance: none; outline: none; position: absolute; right: 0; -webkit-appearance: none; -moz-appearance: none; visibility: hidden;}
 div.checkbox-container-synthoms input + i {background: transparent; position: absolute; cursor: pointer; border-radius: 50%; width: 20px; height: 20px; left: 20px; top: 5px; right: 0; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
 div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px solid #ECBF43;background: #ECBF43; background-image: url(../../../assets/icons/check-yellow-icon.svg); background-position: center; height: 20px; width: 20px; background-size: 80%; background-repeat: no-repeat; z-index: 5;}
-.s-sintoma {color: #2E2E2E; font-family: Helvetica; font-size: 15px; font-weight: 400; display: flex; align-items: center;}
+.s-sintoma {color: #2E2E2E; font-family: Helvetica; font-size: 15px; font-weight: 400; display: flex; align-items: center;}*/
 
 
 .container-preguntas{
@@ -90,6 +142,8 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
         .protection-elements-section {width: 100%; margin: 0 auto;}
         .protection-elements-title {font-size: 16px; margin: 0 0 10px; text-align: center;}
         .protection-options-container {display: flex; flex-direction: row; justify-content: space-around; text-align: center; width: 60%; margin: 0 auto;}
+        
+        
         .s-element {font-size: 14px; vertical-align: middle;text-align: left;}
         .m-right {margin-right: 20px;}
         
@@ -134,51 +188,16 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
         
     }
 
-@media only screen and (max-width:768px)
-    {
-        .main-protection-elements-container {width: 100%; margin: 40px auto;}
-        .protection-elements-section {width: 100%; margin: 0 auto;}
-        .protection-elements-title {font-size: 16px; margin: 0 0 10px; text-align: center;}
-        .protection-options-container {display: flex; flex-direction: column; justify-content: center; text-align: center; width: 60%; margin: 0 auto;}
-        .s-element {font-size: 14px; vertical-align: middle;}
-        .m-right {margin-right: 20px;}
-        
-        .options-risk-main-container {margin: 30px auto 0; position: relative; z-index: 10; align-items: center;}
-        .options-risk-container {width: 61%; margin: 20px auto; padding: 0;}
-        .m-top {margin-top: 30px;}
+    @media only screen and (max-width:768px){
+      .protection-options-container {display: flex; flex-direction: column; justify-content: center; text-align: center; margin: 0 auto; width: 90%;}
 
-        .main-protection-elements-container form > button {position: relative; z-index: 10;}
+      .clients-register {
+        width: 90%;
+    
+    }
 
-        /* footer */
-        .footer-protection { display: none;}
-        
-        /* ovalos */
-        .ovalos {right: 0; bottom: 50; width: 10%; height: 30%; min-width: 100px; min-height: 100px; z-index: 0;}
-        
     }
 
 
-@media only screen and (max-width:600px)
-    {
-        .main-protection-elements-container {width: 90%; margin: 20px auto;}
-        .protection-elements-section {width: 100%; margin: 0 auto;}
-        .protection-elements-title {font-size: 12px; margin: 0 0 10px; text-align: left;}
-        .protection-options-container {display: flex; flex-direction: column; justify-content: flex-start; text-align: left; width: 80%; margin: 0 auto;}
-        
-        .options-risk-main-container {margin: 30px auto 0; position: relative; z-index: 10;}
-        .options-risk-container {width: 81%; margin: 0 auto; padding: 0; grid-row-gap: 15px;}
-        .s-element {font-size: 12px; margin-right: 0px; display: flex; align-items: center;}
-        .m-top {margin-top: 20px;}
-        .r-top {margin-top: 10px;}
-        div.checkbox-container-synthoms input + i {background: transparent; position: absolute; cursor: pointer; border-radius: 50%; width: 20px; height: 20px; left: 0px; top: -13px; right: 0; box-shadow: 0px 2px 2px #00000029; border: 1px solid #ECBF43;}
 
-
-        .main-protection-elements-container form > button {position: relative; z-index: 10;}
-
-        /* footer */
-        .footer-protection { display: none;}
-        
-        /* ovalos */
-        .ovalos {right: 0; bottom: 50; width: 10%; height: 30%; min-width: 100px; min-height: 100px; z-index: 0;}
-    }
 

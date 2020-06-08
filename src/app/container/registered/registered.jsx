@@ -7,7 +7,11 @@ import './registered.css';
 
 
 const registered = () =>{
-
+    function clear(){
+        return localStorage.clear()
+        console.log('auth')
+    } 
+   
     return(
         <React.Fragment>
             <div className="main-registered-container">
@@ -27,7 +31,7 @@ const registered = () =>{
                     </div>
 
                     <div>
-                        <button>nuevo registro</button>
+                        <button onclick={localStorage.clear()}><a href="https://formnuestros.iatech.com.co/">nuevo registro</a></button>
                     </div>
                 </div>
                 <div className='footer-registered'>

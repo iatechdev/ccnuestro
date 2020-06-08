@@ -9,19 +9,31 @@ import axios from 'axios';
 const RegistroClientes = ({ history }) =>{
 
     const [datastorange] = useState(JSON.parse(localStorage.getItem("Token")));
+    const [datauser] = useState(JSON.parse(localStorage.getItem("userdata")));
     const { register, handleSubmit,errors,reset} = useForm()
     const [authdata, setAuth] = useState({});
-
     const onSubmit = (data) =>{updateClient(data)} 
+
+    async function getUser(){
+        await axios.get(`https://formnuestros.iatech.com.co:4002/api/personalData/getuser?sic_code=${datastorange.sic}`).then((response) =>{   
+        if(response.status === 200 && response.data && response.data.User){
+            
+              localStorage.setItem("userdata", JSON.stringify(response.data.User[0])); 
+                    
+            }
+
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }
 
     function handleChange(e) {
         setAuth({...authdata, [e.target.name] : e.target.value })
     }
 
     async function updateClient(data){
-        
-        console.log(datastorange)
-        await axios.put(`https://formnuestros.iatech.com.co:4002/api/auth/data/${datastorange.id}`, 
+
+        await axios.put(`https://formnuestros.iatech.com.co:4002/api/auth/data/${datastorange.sic}`, 
         {
             name: data.name,
 	        celular_c : data.celular_c ,
@@ -29,7 +41,7 @@ const RegistroClientes = ({ history }) =>{
 	        ia_mall_id_c : data.ia_mall_id_c 
 
         }).then((response)=>{
-            console.log(response)
+            
             if(response.status === 200){
                 history.push("/registrodeproteccion")
             }
@@ -39,6 +51,10 @@ const RegistroClientes = ({ history }) =>{
 
 
     }
+
+    useEffect(() => {
+        getUser();
+    },[]);
 
   
     return(
@@ -56,9 +72,11 @@ const RegistroClientes = ({ history }) =>{
                         <div className='form-container'>
                             <input className='item1 data-id' type="text" value={datastorange.tipo} />
                   
-                            <input className='item5 personal-data-field' type="email" onChange={e => handleChange(e)} name="email_name" ref={register}  id="email_name" placeholder="Email"/>
+                            
+                            <input className='item5 personal-data-field' type="email" onChange={e => handleChange(e)} defaultValue={datauser ? datauser.email_address : ""}  name="email_name" ref={register}  id="email_name" placeholder="Email"/>
                             
                             <input className='item2 data-id' type="text" value= {datastorange.sic} placeholder="457869090"/>
+
 
                             <select className='item6' name="ia_mall_id_c" defaultValue="none" onChange={e => handleChange(e)}  ref={register}  id="ia_mall_id_c" >
                                 <option className='option-cities' value="none" disabled >Centro Comercial</option>
@@ -67,13 +85,12 @@ const RegistroClientes = ({ history }) =>{
                                 <option value="Nuestro Uraba">Nuestro Uraba</option>
                                 <option value="Nuestro Cartago">Nuestro Cartago</option>
                             </select>
-                            
-                            
-                            <input className='item3 personal-data-field' type="text" onChange={e => handleChange(e)} name="name"  ref={register}  id="name"  placeholder="Nombre Completo"/>
-                            
-                            <span className='item7-grid-d-none'></span>
+                                        
+                                        <input className='item3 personal-data-field' type="text" onChange={e => handleChange(e)} name="name" defaultValue={datauser ? datauser.name : ""} ref={register}  id="name"  placeholder="Nombre Completo"/>
 
-                            <input className='item4 personal-data-field' type="text"  onChange={e => handleChange(e)} name="celular_c"  ref={register}  id="celular_c" placeholder="Teléfono / Celular"/>
+                            <span className='item7-grid-d-none'></span>
+                            <input className='item4 personal-data-field' type="text"  onChange={e => handleChange(e)} name="celular_c" defaultValue={datauser ? datauser.celular_c : ""}   ref={register} id="celular_c" placeholder="Teléfono / Celular"/>
+
                         </div>
 
                         <button className=''>continuar</button>
