@@ -16,19 +16,34 @@ const Home = ({ history, data }) =>{
     const [stateButton, setStateButton] = useState(true);
     const [stateDOM, setStateDOM] = useState(false);
     let dataValue = undefined;
+    const [module, setModule] = useState(false);
 
-    
-   
     document.addEventListener("change", () => {setStateDOM(true)});
 
     const onSubmit = dataForm => {
         if(stateButton){
             setStateButton(false);
             dataValue = dataForm;
+            console.log(dataValue);
+            if(!module) {
+                alert('Debe escojer el tipo de usuario');
+                setStateButton(true);
+                return;
+            }
+            if(dataValue.tipo === 'none') {
+                alert('Debe escojer el tipo de documento');
+                setStateButton(true);
+                return;
+            }
             Auth(dataValue);
         } else if(!stateButton){
             alert("espere un momento por favor");
+            return;
         }
+    };
+
+    function handleChange(event) {
+        setModule(true);
     }
 
     
@@ -42,7 +57,7 @@ const Home = ({ history, data }) =>{
                  console.log(response.data.Userexist[0].id)
                  const token = {auth : true, sic : dataValue.sic, tipo : dataValue.tipo, id:response.data.Userexist[0].id}
                  setStateButton(true);
-                 localStorage.setItem("Token", JSON.stringify(token)); 
+                 localStorage.setItem("Token", JSON.stringify(token));
                  history.push('/registro');           
              }else if(response.status === 204){
                  setStateButton(true);              
@@ -67,7 +82,7 @@ const Home = ({ history, data }) =>{
                         <div className='radial-container'>
                             <div className="container-user">
                                 <label className="content-input">
-                                    <input className="s-radial" type="radio" id="cliente" name="module" value="client"/>
+                                    <input className="s-radial" onChange={() => handleChange()} type="radio"  id="cliente" name="module" value="client"/>
                                     <i></i>
                                 </label>
                                 <label className="style-font m-client cliente" htmlFor="cliente">Cliente</label>
@@ -75,7 +90,7 @@ const Home = ({ history, data }) =>{
 
                             <div className="container-user">
                                 <label className="content-input">
-                                    <input className="s-radial" type="radio" id="empleado" name="module" value="employee"/>
+                                    <input className="s-radial" type="radio" onChange={() => handleChange()}  id="empleado" name="module" value="employee"/>
                                     <i></i>
                                 </label>
                                 <label className="style-font empleado" htmlFor="empleado">Empleado</label>

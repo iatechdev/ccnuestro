@@ -18,6 +18,10 @@ const ProtectionElements = ({history}) =>{
     }
 
     async function formGuard(dataForm){
+        console.log(dataForm)
+        if(!dataForm.guantes && !dataForm.tapabocas && !dataForm.mascarilla) {
+            alert('debe seleccionar por lo menos 1 elemento de bioseguridad');
+        }
         try {
             const response = await 
             axios({
