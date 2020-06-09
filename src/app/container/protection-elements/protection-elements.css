@@ -196,6 +196,10 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
       /* .ovalos-protection-elements {display: none !important;} */
       .ovalos-protection-elements {z-index: 1; right: 0px; bottom: 0; width: 20%; height: 20%; min-width: 200px; min-height: 100px;}
 
+      .s-element {font-size: 13px !important; vertical-align: middle;}
+
+      .main-container {position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; box-sizing: border-box; overflow: scroll;}
+
     }
 
 
