@@ -13,41 +13,48 @@ router.get("/getuser", async (req, res) => {
   }
 });
 
-//ruta para la validación del nit
-
-router.post("/valid", async (req, res) => {
-  const { sic,tipo } = req.body;
-  const validateuser = await dbconnect.query("SELECT * FROM accounts WHERE sic_code = ?",[sic]);
-  if (validateuser.length > 0) {
-    const validatetipo = await dbconnect.query("SELECT * FROM accounts_cstm WHERE tipo_identificacion_c = ? AND id_c = ?",[tipo,validateuser[0].id]);
-    if (validatetipo.length > 0) {
-      res.status(200).json({
-        ok: validatetipo
-      });
-    }
-} else {
-    res.status(204).json({
-      ok: false,
-    });
-  };
-});
-
-
-router.put("/data/:id", (req,res,next) => {
-  const { id } = req.params;
-  const { name, celular_c, email_name, ia_mall_id_c} = req.body
+router.put("/data/:sic_code",async(req,res,next) => {
+  const { sic_code } = req.params;
+  const {name, celular_c, email_name, ia_mall_id_c} = req.body
 
     try{
-      if(typeof ia_mall_id_c != "string") return res.json({error: true, message : 'seleccione el centro comercial'})
-      const id_mall = dbconnect.query('SELECT id FROM ia_mall WHERE LOWER(name) = ?', [ia_mall_id_c.toLowerCase()])
+      if(typeof ia_mall_id_c != "string") return res.json({error: true, message : 'seleccione el centro comercial'});
+      const id_mall = await dbconnect.query('SELECT id FROM ia_mall WHERE LOWER(name) = ?', [ia_mall_id_c.toLowerCase()]);
+      if(!id_mall || id_mall.lenght <= 0){
+        return res.json({
+          error: true,
+          msj:'No existe el CC'
+        })
+      }
+      console.log(id_mall)
+      switch (id_mall[0].id) {
+        case "4bbb8759-71b3-a113-94ff-5d2a195fb31a":
+          select_mall ="c1e8b5ff-8aa7-8f11-f25d-5d63aeb9e0bb"
+          break;
+          case "7d0d0a3f-5d38-4fe0-f3e3-5d7aca3409af":
+          select_mall ="aef7ae43-c84f-5690-4247-5d7ace150dc4"
+          break;
+          case "96c9cc49-c8e1-e0f4-d2bb-5d2a19a5dfb1":
+          select_mall ="96c9cc49-c8e1-e0f4-d2bb-5d2a19a5dfb1"
+          break;
+          case "99af0640-df44-306e-c31b-5d29ec2d88cf":
+          select_mall ="5b6f0d50-7449-38d0-802b-5d29fd4f998e"
+          break;        
+        default:
+          select_mall="none"
+          break;
+      }
       const Query = 'UPDATE accounts as a '+ 
-      'INNER JOIN accounts_cstm as ac ON a.id = ac.id_c '+
-      'INNER JOIN email_addr_bean_rel as eabr ON ac.id_c = eabr.bean_id '+
-      'INNER JOIN email_addresses as ea ON eabr.email_address_id = ea.id '+
-      'INNER JOIN ia_mall as ia ON ac.ia_mall_id_c = ia.id '+
-      'SET a.name = ?, celular_c = ?, email_address = ?, ia.name= ?, tipohabeasdata_c = "web" , habeasdata_c = 1 WHERE a.id = ?'
-    const newData = dbconnect.query( Query , [name, celular_c,email_name, ia_mall_id_c, id]);
+      'LEFT JOIN accounts_cstm as ac ON a.id = ac.id_c '+
+      'LEFT JOIN email_addr_bean_rel as eabr ON ac.id_c = eabr.bean_id '+
+      'LEFT JOIN email_addresses as ea ON eabr.email_address_id = ea.id '+
+      'LEFT JOIN ia_mall as ia ON ac.ia_mall_id_c = ia.id '+
+      'SET a.name = ?, ac.celular_c = ?, ea.email_address = ?, ac.ia_mall_id_c= ?, ac.tipohabeasdata_c = "web" ,a.assigned_user_id = ?,ac.habeasdata_c = 1 WHERE a.sic_code = ?'
+      const newData = await dbconnect.query( Query , [name, celular_c,email_name,id_mall[0].id,select_mall, sic_code]);
+ 
       res.json({ newData, Query});
+
+
     }
     catch (error){
       return res.status(500).json({
@@ -56,53 +63,6 @@ router.put("/data/:id", (req,res,next) => {
       })
     }
 })
-
-
-/*router.put('/seguridad/:id', async(req,res) => {
-  const { id } = req.params;
-
-  // const valid =((typeof boolean)!='boolean')? false:true
-  tapabocas =(typeof req.body.tapabocas == 'undefined' || req.body.tapabocas == 0 ) ? false:true;
-  mascarilla =(typeof req.body.mascarilla == 'undefined' ||  req.mascarilla == 0 ) ? false:true;
-  guantes =(typeof req.body.guantes == 'undefined' ||  req.guantes == 0 ) ? false:true;
-  pregunta1_c =(typeof req.body.pregunta1_c == 'undefined' || req.pregunta1_c == 0 ) ? false:true;
-  pregunta2_c =(typeof req.body.pregunta2_c == 'undefined' || req.pregunta2_c == 0 ) ? false:true;
-  pregunta3_c =(typeof req.body.pregunta3_c == 'undefined' ||req.pregunta3_c == 0 ) ? false:true;
-  pregunta4_c =(typeof req.body.pregunta4_c == 'undefined' || req.pregunta4_c == 0 ) ? false:true;
-  pregunta5_c =(typeof req.body.pregunta5_c == 'undefined' ||req.pregunta5_c == 0 ) ? false:true;
-
-
-
-  /*const themes= [
-    tapabocas,
-    mascarilla,
-    guantes,
-    pregunta1_c,
-    pregunta2_c,
-    pregunta3_c,
-    pregunta4_c,
-    pregunta5_c
-   ] ;
-
-  try {
-    const Query = 'UPDATE accounts as a '+
-    'INNER JOIN accounts_ia_controlbioseguridad_1_c  as aic ON a.id = aic.accounts_ia_controlbioseguridad_1accounts_ida '+
-    'INNER JOIN ia_controlbioseguridad as iacb ON aic.accounts_ia_controlbioseguridad_1ia_controlbioseguridad_idb = iacb.id '+
-    'INNER JOIN  ia_controlbioseguridad_cstm as iacs ON iacb.id = iacs.id_c '+
-    'SET tapabocas = ?, mascarilla = ?, guantes = ?, pregunta1_c = ?, pregunta2_c = ?, pregunta3_c = ?, pregunta4_c = ?, pregunta5_c = ? WHERE a.id = ? '
-
-    const control= dbconnect.query( Query, [...themes, id]);
-
-    res.json({ control, Query});
-  } catch (error) {
-    return res.status(500).json({
-      mensaje: 'error',
-      error
-    })   
-  }
-} )*/
-
-//ruta para la validación el authorización de datos
 
 
 router.post('/seguridad',async(req,res) => {
@@ -129,7 +89,7 @@ router.post('/seguridad',async(req,res) => {
     const control = await dbconnect.query ('INSERT INTO ia_controlbioseguridad (id,date_entered,tapabocas,mascarilla,guantes) VALUES(?,?,?,?,?) ',[id_cs, date,tapabocas,mascarilla,guantes]);
     const preguntas =await dbconnect.query ('INSERT INTO ia_controlbioseguridad_cstm (id_c, pregunta1_c, pregunta2_c,pregunta3_c,pregunta4_c, pregunta5_c) VALUES(?,?,?,?,?,?) ',[id_cs, pregunta1_c, pregunta2_c,pregunta3_c,pregunta4_c, pregunta5_c]);
     
-    res.status(200).json({
+    res.json({
       'responde': 
       controles,
       control,
@@ -137,6 +97,7 @@ router.post('/seguridad',async(req,res) => {
       ok: true
     });
   } catch(error){
+    console.log(error);
     res.json(error)
   }
 });

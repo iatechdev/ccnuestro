@@ -38,7 +38,46 @@ router.get('/seguritycontrol', async(req, res) => {
   }
 });
 
+
 //actualizar los datos de null
+
+router.put('/newinterest_nit/:id_c', async(req,res) => {
+  const { id_c } = req.params;
+
+  // const valid =((typeof boolean)!='boolean')? false:true
+    tapabocas =(typeof req.body.tapabocas == 'undefined' || req.tapabocas == 0 ) ? false:true;
+    mascarilla =(typeof req.body.mascarilla == 'undefined' || req.mascarilla == 0 ) ? false:true;
+    guantes =(typeof req.body.guantes == 'undefined' || req.guantes == 0 ) ? false:true;
+    pregunta1_c =(typeof req.body.pregunta2_c == 'undefined' || req.pregunta1_c == 0 ) ? false:true;
+    pregunta2_c =(typeof req.body.pregunta2_c == 'undefined' || req.pregunta2_c == 0 ) ? false:true;
+    pregunta3_c =(typeof req.body.pregunta3_c == 'undefined' || req.pregunta3_c == 0 ) ? false:true;
+    pregunta4_c =(typeof req.body.pregunta4_c == 'undefined' || req.pregunta4_c == 0 ) ? false:true;
+
+
+
+  const themes= {
+    administrativo_c,
+    mascarilla,
+    guantes,
+    pregunta1_c,
+    pregunta2_c,
+    pregunta3_c,
+    pregunta4_c
+  } ;
+
+  try {
+    const newThemes_nit = await dbconnect.query('UPDATE accounts_cstm SET ? WHERE id_c = ? ' , [themes, id_c]);
+    
+    res.json({ newThemes_nit });
+
+  } catch (error) {
+    return res.status(500).json({
+      mensaje: 'error',
+      error
+    })   
+  }
+  
+} )
 
 
 //actualización  de los temas de interes de clientes
