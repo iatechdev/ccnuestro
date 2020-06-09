@@ -37,7 +37,8 @@ const ProtectionElements = ({history}) =>{
                     pregunta2_c: dataForm.pregunta2_c,
                     pregunta3_c: dataForm.pregunta3_c,
                     pregunta4_c: dataForm.pregunta4_c,
-                    pregunta5_c: dataForm.pregunta5_c 
+                    pregunta5_c: dataForm.pregunta5_c,
+                    pregunta6_c: dataForm.pregunta6_c  
                 })
             })
         console.log(response)
@@ -85,32 +86,37 @@ const ProtectionElements = ({history}) =>{
                                         <div className='main-checkbox-container  m-top-mobile'>
                                    
                                    <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta1_c ? true : false} id="pregunta1_c" name="pregunta1_c"/>
-                                   <label className='s-element' htmlFor="pregunta1_c">He presentado algún síntoma la última semana (tos, fiebre, malestar general)</label>
+                                   <label className='s-element' htmlFor="pregunta5_c">He presentado algún síntoma la última semana (tos, fiebre, malestar general)</label>
                                    </div>
 
                                     <div className='main-checkbox-container  m-top-mobile'>
                                    
                                     <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta2_c ? true : false} id="pregunta2_c" name="pregunta2_c"/>
-                                    <label className='s-element' htmlFor="pregunta2_c">Estuve en contacto con personas que presentaron alguno de esos síntomas</label>
+                                    <label className='s-element' htmlFor="pregunta1_c">Estuve en contacto con personas que presentaron alguno de esos síntomas</label>
                                     </div>
                                 
                                 <div className='main-checkbox-container  m-top-mobile'>
                                    
                                         <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta3_c? true : false} id="pregunta3_c" name="pregunta3_c"/>
-                                        <label className='s-element' htmlFor="pregunta3_c">Hice un viaje internacional en los últimos 30 días</label>
+                                        <label className='s-element' htmlFor="pregunta2_c">Hice un viaje internacional en los últimos 30 días</label>
                                 </div>
                                                                 
                                 <div className='main-checkbox-container  m-top-mobile'>
                                    
                                         <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta4_c ? true : false} id="pregunta4_c" name="pregunta4_c"/>
-                                    <label className='s-element' htmlFor="pregunta4_c">Hice un viaje nacional en los últimos 30 días</label>
+                                    <label className='s-element' htmlFor="pregunta3_c">Hice un viaje nacional en los últimos 30 días</label>
                                 </div>
 
                                 <div className='main-checkbox-container  m-top-mobile'>
                                    
                                         <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta5_c ? true : false} id="pregunta5_c" name="pregunta5_c"/>
-                                    <label className='s-element' htmlFor="pregunta5_c">Soy trabajador de la salud</label>
+                                    <label className='s-element' htmlFor="pregunta4_c">Soy trabajador de la salud</label>
                                 </div>
+                                <div className='main-checkbox-container  m-top-mobile'>
+                                   
+                                   <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta6_c ? true : false} id="pregunta6_c" name="pregunta6_c"/>
+                               <label className='s-element' htmlFor="pregunta5_c">Ninguna de las anteriores</label>
+                           </div>
                             </div>
                         </div>
                         <button className=''>registrar</button>
