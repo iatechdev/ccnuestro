@@ -189,12 +189,12 @@ div.checkbox-container-synthoms input[type=checkbox]:checked + i {border: 1px so
     }
 
     @media only screen and (max-width:768px){
-      .protection-options-container {display: flex; flex-direction: column; justify-content: center; text-align: center; margin: 0 auto; width: 90%;}
+      .protection-options-container {display: flex; flex-direction: column; justify-content: center; text-align: center; margin: 0 auto; width: 90%; position: relative; z-index: 10;}
 
-      .clients-register {
-        width: 90%;
-    
-    }
+      .clients-register { width: 90%; }
+
+      /* .ovalos-protection-elements {display: none !important;} */
+      .ovalos-protection-elements {z-index: 1; right: 0px; bottom: 0; width: 20%; height: 20%; min-width: 200px; min-height: 100px;}
 
     }
 

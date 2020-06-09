@@ -111,6 +111,12 @@ const ProtectionElements = ({history}) =>{
                                         <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta5_c ? true : false} id="pregunta5_c" name="pregunta5_c"/>
                                     <label className='s-element' htmlFor="pregunta5_c">Soy trabajador de la salud</label>
                                 </div>
+
+                                <div className='main-checkbox-container  m-top-mobile'>
+                                   
+                                        <input className='radio-elements' type="checkbox" onChange={e => handleChange(e)} ref={register} checked={dataForm.pregunta6_c ? true : false} id="pregunta6_c" name="pregunta6_c"/>
+                                    <label className='s-element' htmlFor="pregunta6_c">Ninguna de las anteriores</label>
+                                </div>
                             </div>
                         </div>
                         <button className=''>registrar</button>
