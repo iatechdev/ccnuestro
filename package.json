@@ -4,7 +4,7 @@
   "homepage": "https://formnuestros.iatech.com.co/",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
